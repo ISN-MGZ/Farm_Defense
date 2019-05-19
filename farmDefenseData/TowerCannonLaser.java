@@ -1,0 +1,20 @@
+package farmDefenseData;
+
+import java.util.concurrent.CopyOnWriteArrayList;
+
+public class TowerCannonLaser extends Tower{//Classe canon laser
+
+	
+	public TowerCannonLaser(TowerType type, Tile startTile, CopyOnWriteArrayList<Enemy> enemies) {
+		super(type, startTile, enemies);
+		// TODO Auto-generated constructor stub
+		
+	}
+	
+	@Override
+	public void shoot(Enemy target) {
+		super.projectiles.add(new ProjectileLaser(super.type.projectileType, super.target, super.getX(), super.getY(), 32, 32));
+		super.target.reduceHiddenHealth(super.type.projectileType.damage);
+	}
+
+}
